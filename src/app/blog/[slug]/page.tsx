@@ -18,16 +18,55 @@ interface PostData {
   readTime?: string;
 }
 
+const CDN_BASE = "https://cdn.acorehosting.com/blog/blogs";
+const DATA_FILE = "data.yml";
+const CONTENT_FILE = "content.md";
+
+async function fetchCDN(slug: string) {
+  try {
+    const res = await fetch(`${CDN_BASE}/${slug}/${DATA_FILE}`);
+    if (!res.ok) throw new Error(String(res.status));
+    const text = await res.text();
+    try { return JSON.parse(text); } catch { return load(text); }
+  } catch {
+    return null;
+  }
+}
+
+async function fetchCDNContent(slug: string) {
+  try {
+    const res = await fetch(`${CDN_BASE}/${slug}/${CONTENT_FILE}`);
+    if (!res.ok) throw new Error(String(res.status));
+    return await res.text();
+  } catch {
+    return null;
+  }
+}
+
+async function getData(slug: string): Promise<PostData | null> {
+  const fromCDN = await fetchCDN(slug);
+  if (fromCDN) return fromCDN as PostData;
+  const ymlPath = join(process.cwd(), "blog", slug, "data.yml");
+  if (!existsSync(ymlPath)) return null;
+  return load(readFileSync(ymlPath, "utf-8")) as PostData;
+}
+
+async function getContent(slug: string): Promise<string | null> {
+  const fromCDN = await fetchCDNContent(slug);
+  if (fromCDN) return fromCDN;
+  const mdPath = join(process.cwd(), "blog", slug, "contents.md");
+  if (!existsSync(mdPath)) return null;
+  return readFileSync(mdPath, "utf-8");
+}
+
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const ymlPath = join(process.cwd(), "blog", slug, "data.yml");
-  if (!existsSync(ymlPath)) return { title: "Blog" };
-  const data = load(readFileSync(ymlPath, "utf-8")) as PostData;
-  return { title: data.title || "Blog" };
+  const data = await getData(slug);
+  return { title: (data && data.title) || "Blog" };
 }
 
 function readTime(content: string): string {
@@ -51,15 +90,9 @@ export default async function BlogPost({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const dir = join(process.cwd(), "blog", slug);
-  if (!existsSync(dir)) notFound();
-
-  const ymlPath = join(dir, "data.yml");
-  const mdPath = join(dir, "contents.md");
-  if (!existsSync(ymlPath) || !existsSync(mdPath)) notFound();
-
-  const data = load(readFileSync(ymlPath, "utf-8")) as PostData;
-  const content = readFileSync(mdPath, "utf-8");
+  const data = await getData(slug);
+  const content = await getContent(slug);
+  if (!data || !content) notFound();
   const rt = data.readTime || readTime(content);
 
   return (

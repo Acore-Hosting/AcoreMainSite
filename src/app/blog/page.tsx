@@ -1,6 +1,5 @@
-import { readFileSync, readdirSync, existsSync } from "fs";
+import { readFileSync, existsSync } from "fs";
 import { join } from "path";
-import { load } from "js-yaml";
 import type { Metadata } from "next";
 import Link from "next/link";
 import BlogNav from "./BlogNav";
@@ -20,32 +19,12 @@ interface PostData {
   readTime?: string;
 }
 
-function readTime(content: string): string {
-  const words = content.trim().split(/\s+/).length;
-  const min = Math.max(1, Math.ceil(words / 200));
-  return `${min} min read`;
-}
-
-function getPosts(): { slug: string; data: PostData; readTime: string }[] {
-  const blogDir = join(process.cwd(), "blog");
-  if (!existsSync(blogDir)) return [];
-  return readdirSync(blogDir, { withFileTypes: true })
-    .filter((d) => d.isDirectory())
-    .map((d) => {
-      const ymlPath = join(blogDir, d.name, "data.yml");
-      const mdPath = join(blogDir, d.name, "contents.md");
-      if (!existsSync(ymlPath) || !existsSync(mdPath)) return null;
-      const data = load(readFileSync(ymlPath, "utf-8")) as PostData;
-      const content = readFileSync(mdPath, "utf-8");
-      const rt = data.readTime || readTime(content);
-      return { slug: d.name, data, readTime: rt };
-    })
-    .filter((p): p is { slug: string; data: PostData; readTime: string } => p !== null)
-    .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
-}
-
 export default function BlogPage() {
-  const posts = getPosts();
+  let posts: { slug: string; data: PostData; readTime: string }[] = [];
+  const jsonPath = join(process.cwd(), "public", "data", "blog-posts.json");
+  if (existsSync(jsonPath)) {
+    try { posts = JSON.parse(readFileSync(jsonPath, "utf-8")); } catch {}
+  }
   const latest = posts[0];
   const rest = posts.slice(1);
   const bgNum = posts.length > 0 ? (latest.slug.split("").reduce((a, c) => a + c.charCodeAt(0), 0) % 5) + 1 : 1;
