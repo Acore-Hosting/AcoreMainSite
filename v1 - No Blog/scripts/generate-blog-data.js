@@ -1,6 +1,7 @@
-const { existsSync, mkdirSync, writeFileSync } = require("fs");
+const { readFileSync, readdirSync, existsSync, mkdirSync, writeFileSync } = require("fs");
 const { join } = require("path");
 
+const blogDir = join(__dirname, "..", "blog");
 const outDir = join(__dirname, "..", "public", "data");
 const BASE = "https://cdn.acorehosting.com/blog/blogs";
 const DATA_FILE = "data.yml";
@@ -9,7 +10,7 @@ const CONTENT_FILE = "content.md";
 async function fetchJSON(url) {
   try {
     const res = await fetch(url);
-    if (!res.ok) return null;
+    if (!res.ok) throw new Error(res.status);
     const text = await res.text();
     try { return JSON.parse(text); } catch { return text; }
   } catch {
@@ -20,7 +21,7 @@ async function fetchJSON(url) {
 async function fetchText(url) {
   try {
     const res = await fetch(url);
-    if (!res.ok) return null;
+    if (!res.ok) throw new Error(res.status);
     return await res.text();
   } catch {
     return null;
@@ -28,12 +29,13 @@ async function fetchText(url) {
 }
 
 async function main() {
-  const indexRaw = await fetchJSON(`${BASE}/index.json`);
-  if (!Array.isArray(indexRaw)) {
-    console.log("No index.json found or invalid format");
-    return;
+  let slugs = [];
+
+  if (existsSync(blogDir)) {
+    slugs = readdirSync(blogDir, { withFileTypes: true })
+      .filter((d) => d.isDirectory())
+      .map((d) => d.name);
   }
-  const slugs = indexRaw;
 
   const { load } = require("js-yaml");
 
@@ -42,7 +44,12 @@ async function main() {
       const raw = await fetchJSON(`${BASE}/${slug}/${DATA_FILE}`);
       let data;
       if (!raw) {
-        data = { title: slug, author: "unknown", date: "" };
+        const ymlPath = join(blogDir, slug, "data.yml");
+        try {
+          data = load(readFileSync(ymlPath, "utf-8"));
+        } catch {
+          data = { title: slug, author: "unknown", date: "" };
+        }
       } else if (typeof raw === "string") {
         data = load(raw) || { title: slug, author: "unknown", date: "" };
       } else {

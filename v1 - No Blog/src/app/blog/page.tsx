@@ -48,7 +48,7 @@ export default function BlogPage() {
             <>
               <div className="mb-12">
                 <h2 className="text-2xl font-black tracking-tight mb-6">Latest post</h2>
-                <Link href={`/blog/${latest.slug}`} className="glass-card !rounded-3xl overflow-hidden hover:scale-[0.98] transition-all duration-300 group block">
+                <Link href={`/blog/${latest.slug}`} className="glass-card !rounded-3xl overflow-hidden hover:scale-[1.02] transition-all duration-300 group block">
                   {latest.data.banner && <img src={latest.data.banner} alt={latest.data.title} className="w-full h-48 md:h-64 object-cover" />}
                   <div className="p-8">
                     <p className="text-xs text-neutral-500 mb-3">{latest.data.author} &bull; {latest.data.date} &bull; {latest.readTime}</p>

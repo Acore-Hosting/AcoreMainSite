@@ -1,3 +1,5 @@
+import { readFileSync, existsSync } from "fs";
+import { join } from "path";
 import { load } from "js-yaml";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -23,7 +25,7 @@ const CONTENT_FILE = "content.md";
 async function fetchCDN(slug: string) {
   try {
     const res = await fetch(`${CDN_BASE}/${slug}/${DATA_FILE}`);
-    if (!res.ok) return null;
+    if (!res.ok) throw new Error(String(res.status));
     const text = await res.text();
     try { return JSON.parse(text); } catch { return load(text); }
   } catch {
@@ -34,7 +36,7 @@ async function fetchCDN(slug: string) {
 async function fetchCDNContent(slug: string) {
   try {
     const res = await fetch(`${CDN_BASE}/${slug}/${CONTENT_FILE}`);
-    if (!res.ok) return null;
+    if (!res.ok) throw new Error(String(res.status));
     return await res.text();
   } catch {
     return null;
@@ -42,11 +44,19 @@ async function fetchCDNContent(slug: string) {
 }
 
 async function getData(slug: string): Promise<PostData | null> {
-  return (await fetchCDN(slug)) as PostData | null;
+  const fromCDN = await fetchCDN(slug);
+  if (fromCDN) return fromCDN as PostData;
+  const ymlPath = join(process.cwd(), "blog", slug, "data.yml");
+  if (!existsSync(ymlPath)) return null;
+  return load(readFileSync(ymlPath, "utf-8")) as PostData;
 }
 
 async function getContent(slug: string): Promise<string | null> {
-  return await fetchCDNContent(slug);
+  const fromCDN = await fetchCDNContent(slug);
+  if (fromCDN) return fromCDN;
+  const mdPath = join(process.cwd(), "blog", slug, "contents.md");
+  if (!existsSync(mdPath)) return null;
+  return readFileSync(mdPath, "utf-8");
 }
 
 export async function generateMetadata({
@@ -65,15 +75,13 @@ function readTime(content: string): string {
   return `${min} min read`;
 }
 
-export async function generateStaticParams() {
-  try {
-    const res = await fetch(`${CDN_BASE}/index.json`);
-    if (!res.ok) return [];
-    const slugs: string[] = await res.json();
-    return slugs.map((slug) => ({ slug }));
-  } catch {
-    return [];
-  }
+export function generateStaticParams() {
+  const blogDir = join(process.cwd(), "blog");
+  if (!existsSync(blogDir)) return [];
+  const { readdirSync } = require("fs") as typeof import("fs");
+  return readdirSync(blogDir, { withFileTypes: true })
+    .filter((d) => d.isDirectory())
+    .map((d) => ({ slug: d.name }));
 }
 
 export default async function BlogPost({
