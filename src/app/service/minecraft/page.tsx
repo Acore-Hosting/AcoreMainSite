@@ -239,7 +239,7 @@ function Plans() {
                 </ul>
                 <div className="flex items-end justify-between mt-auto gap-4">
                   <div className="flex flex-col">
-                    <span className="text-xs text-neutral-500">Starting at,</span>
+                    <span className="text-xs text-neutral-500">Starting at</span>
                     <div className="text-3xl font-black">{plan.price}<span className="text-base font-semibold text-neutral-400">/mo</span></div>
                   </div>
                   <Link href="https://my.acorehosting.com" className="btn scale shrink-0 bg-[#22c55e] text-[#052e16] font-bold px-6 py-3 text-sm rounded-full hover:rounded-2xl transition-all duration-300">
