@@ -200,7 +200,7 @@ function Plans() {
         <div data-aos="fade-up" className="mb-10">
           <div className="glass-card !rounded-2xl px-6 py-4 flex items-center gap-3 border-l-4 border-yellow-500">
             <svg className="h-5 w-5 text-yellow-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" /></svg>
-            <p className="text-sm text-neutral-600 dark:text-neutral-300">You&apos;ll need to open a ticket on <a href="https://discord.com" className="text-[#3b82f6] font-bold hover:underline">Discord</a> to start your purchase. We&apos;ll help you pick the right plan and give you a discount code.</p>
+            <p className="text-sm text-neutral-600 dark:text-neutral-300">You&apos;ll need to open a ticket on <a href="https://discord.gg/cqT5zpNVEd" className="text-[#3b82f6] font-bold hover:underline">Discord</a> to start your purchase. We&apos;ll help you pick the right plan and give you a discount code.</p>
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
