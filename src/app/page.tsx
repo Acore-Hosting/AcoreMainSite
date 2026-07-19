@@ -200,6 +200,7 @@ function Reviews() {
   const reviews = [
     {
       name: "Mike",
+      avatar: "https://cdn.acorehosting.com/logo.png",
       date: "6 July 2026",
       rating: 5,
       review:
@@ -208,6 +209,7 @@ function Reviews() {
     },
     {
       name: "Matt Trubchik",
+      avatar: "https://cdn.acorehosting.com/logo.png",
       date: "28 May 2026",
       rating: 5,
       review:
@@ -216,16 +218,18 @@ function Reviews() {
     },
     {
       name: "C Akshaj",
+      avatar:
+        "https://user-images.trustpilot.com/6a114ee38dd5c47d9a83c7cd/73x73.png",
       date: "23 May 2026",
       rating: 5,
       review:
-        "wow never seen something as good as this so good earlier I used play hosting but that’s trash compared to this...",
+        "wow never seen something as good as this so good earlier I used play hosting but that's trash compared to this...",
       link: "https://www.trustpilot.com/reviews/6a114ee813c5d94119f8e55a",
     },
   ];
 
   return (
-    <div className="w-screen flex flex-col gap-10 px-5 py-[150px] min-h-screen bg-black text-white items-center justify-center">
+    <div className="w-screen flex flex-col gap-10 px-5 py-[150px] bg-black text-white items-center justify-center">
       <div className="flex flex-col items-center justify-center gap-10 2xl:px-[350px] w-full">
         <div
           className="glass-card p-1.5 px-5 rounded-full text-[15px] font-semibold text-center"
@@ -252,17 +256,53 @@ function Reviews() {
       </div>
 
       <div className="2xl:px-[350px] w-full">
+
+        {/* Trustpilot Summary */}
+        <div
+          className="glass-card rounded-3xl p-8 mb-10 flex flex-col md:flex-row items-center justify-between gap-6"
+          data-aos="fade-up"
+          data-aos-delay="400"
+        >
+          <div className="flex items-center gap-5">
+            <img
+              src="https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-4.5.svg"
+              alt="Trustpilot Rating"
+              className="h-10"
+            />
+
+            <div>
+              <h3 className="text-2xl font-bold custom-font">
+                Rated <span className="text-green-400">4.3 / 5</span> on Trustpilot
+              </h3>
+
+              <p className="text-neutral-400">
+                Based on verified customer reviews.
+              </p>
+            </div>
+          </div>
+
+          <a
+            href="https://uk.trustpilot.com/review/acorehosting.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-primary scale"
+          >
+            View Trustpilot
+          </a>
+        </div>
+
+        {/* Review Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
 
           {reviews.map((review, i) => (
             <div
               key={i}
               data-aos="fade-up"
-              data-aos-delay={400 + i * 100}
-              className="glass-card rounded-3xl p-8 flex flex-col h-full hover:scale-95 transition-transform duration-300"
+              data-aos-delay={600 + i * 100}
+              className="glass-card flex-1 h-full flex flex-col gap-6 p-10 rounded-3xl hover:scale-95 transition-transform duration-300 ease-out"
             >
-              <div className="flex items-center justify-between mb-5">
-                <div className="flex text-yellow-400 text-xl">
+              <div className="flex items-center justify-between">
+                <div className="flex gap-1 text-yellow-400 text-xl">
                   {Array.from({ length: 5 }).map((_, star) => (
                     <span key={star}>
                       {star < review.rating ? "★" : "☆"}
@@ -274,20 +314,27 @@ function Reviews() {
                   href={review.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-green-400 hover:text-green-300 text-sm font-semibold"
+                  className="btn-outline green !px-4 !py-2 rounded-xl text-sm"
                 >
-                  Trustpilot ↗
+                  Trustpilot
                 </a>
               </div>
 
-              <div className="flex items-center gap-4 mb-5">
-                <div className="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-xl font-bold">
-                  {review.name.charAt(0)}
-                </div>
+              <div className="flex items-center gap-4">
+                <img
+                  src={review.avatar}
+                  alt={review.name}
+                  className="w-14 h-14 rounded-full object-cover border border-neutral-700"
+                />
 
                 <div>
-                  <h3 className="font-bold text-lg">{review.name}</h3>
-                  <p className="text-neutral-500 text-sm">{review.date}</p>
+                  <h3 className="text-xl font-bold custom-font">
+                    {review.name}
+                  </h3>
+
+                  <p className="text-sm text-neutral-500">
+                    {review.date}
+                  </p>
                 </div>
               </div>
 
@@ -309,9 +356,10 @@ function Reviews() {
             rel="noopener noreferrer"
             className="btn expand scale btn-primary px-8 py-3"
           >
-            View all Trustpilot reviews
+            Read all Trustpilot reviews
           </a>
         </div>
+
       </div>
     </div>
   );
