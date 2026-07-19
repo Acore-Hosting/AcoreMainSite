@@ -232,6 +232,7 @@ function Reviews() {
     <div className="w-screen flex flex-col gap-10 px-5 py-[150px] bg-black text-white items-center justify-center">
 
       <div className="flex flex-col items-center justify-center gap-10 2xl:px-[350px] w-full">
+
         <div
           className="glass-card p-1.5 px-5 rounded-full text-[15px] font-semibold text-center"
           data-aos="fade-up"
@@ -254,29 +255,15 @@ function Reviews() {
         >
           Hundreds of gamers and developers trust Acore Hosting.
         </p>
+
       </div>
 
 
       <div className="2xl:px-[350px] w-full">
 
-        {/* Trustpilot Summary */}
+        {/* Trustpilot Rating */}
         <div
-          className="
-            glass-card
-            rounded-3xl
-            p-8
-            mb-10
-            flex
-            flex-col
-            items-center
-            justify-center
-            gap-4
-            text-center
-            transition-transform
-            duration-500
-            ease-out
-            hover:scale-[0.97]
-          "
+          className="glass-card rounded-3xl p-8 mb-10 flex flex-col items-center justify-center gap-4 text-center"
           data-aos="fade-up"
           data-aos-delay="400"
         >
@@ -313,19 +300,7 @@ function Reviews() {
               key={i}
               data-aos="fade-up"
               data-aos-delay={600 + i * 100}
-              className="
-                glass-card
-                flex
-                flex-col
-                gap-6
-                p-10
-                rounded-3xl
-                h-full
-                transition-transform
-                duration-500
-                ease-out
-                hover:scale-[0.97]
-              "
+              className="glass-card flex-1 h-full flex flex-col gap-10 p-10 rounded-3xl hover:scale-95 transition-transform duration-300 ease-out"
             >
 
               <div className="flex items-center justify-between">
@@ -343,13 +318,7 @@ function Reviews() {
                   href={review.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="
-                    text-green-400
-                    text-sm
-                    font-semibold
-                    hover:text-green-300
-                    transition-colors
-                  "
+                  className="text-green-400 hover:text-green-300 text-sm font-semibold transition-colors"
                 >
                   Trustpilot ↗
                 </a>
@@ -362,14 +331,7 @@ function Reviews() {
                 <img
                   src={review.avatar}
                   alt={review.name}
-                  className="
-                    w-14
-                    h-14
-                    rounded-full
-                    object-cover
-                    border
-                    border-neutral-700
-                  "
+                  className="w-14 h-14 rounded-full object-cover border border-neutral-700"
                 />
 
                 <div>
@@ -399,7 +361,6 @@ function Reviews() {
     </div>
   );
 }
-
 function Team() {
   return (
     <div id="team" className="w-screen flex flex-col gap-10 px-5 py-[150px] min-h-screen bg-black text-white border-t-2 border-neutral-800 items-center justify-center">
