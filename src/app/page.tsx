@@ -258,28 +258,27 @@ function Reviews() {
       <div className="2xl:px-[350px] w-full">
 
         {/* Trustpilot Summary */}
-        <div
-          className="glass-card rounded-3xl p-8 mb-10 flex flex-col md:flex-row items-center justify-between gap-6"
-          data-aos="fade-up"
-          data-aos-delay="400"
-        >
-          <div className="flex items-center gap-5">
-            <img
-              src="https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-4.5.svg"
-              alt="Trustpilot Rating"
-              className="h-10"
-            />
+<div
+  className="glass-card rounded-3xl p-8 mb-10 flex flex-col items-center justify-center gap-5 text-center"
+  data-aos="fade-up"
+  data-aos-delay="400"
+>
+  <img
+    src="https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-4.5.svg"
+    alt="Trustpilot Rating"
+    className="h-10"
+  />
 
-            <div>
-              <h3 className="text-2xl font-bold custom-font">
-                Rated <span className="text-green-400">4.3 / 5</span> on Trustpilot
-              </h3>
+  <div>
+    <h3 className="text-2xl font-bold custom-font">
+      Rated <span className="text-green-400">4.3 / 5</span> on Trustpilot
+    </h3>
 
-              <p className="text-neutral-400">
-                Based on verified customer reviews.
-              </p>
-            </div>
-          </div>
+    <p className="text-neutral-400 mt-2">
+      Based on verified customer reviews.
+    </p>
+  </div>
+</div>
 
           <a
             href="https://uk.trustpilot.com/review/acorehosting.com"
