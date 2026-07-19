@@ -17,12 +17,12 @@ const software = [
 
 const features = [
   {
-    title: "3 GB RAM",
-    desc: "Plenty of memory for bots, sites, and small applications.",
+    title: "4 GB RAM",
+    desc: "Plenty of memory for Minecraft.",
     icon: "M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z",
   },
   {
-    title: "300% CPU",
+    title: "200% CPU",
     desc: "Fair-share CPU allocation with plenty of headroom.",
     icon: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
   },
@@ -32,8 +32,8 @@ const features = [
     icon: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4",
   },
   {
-    title: "3 Ports",
-    desc: "Run up to 3 services simultaneously on your free server.",
+    title: "5 Ports",
+    desc: "Run up to 5 ports simultaneously on your free server.",
     icon: "M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4",
   },
   {
@@ -136,7 +136,7 @@ function Header() {
           <span className="text-[#14b8a6]">for everyone</span>
         </h1>
         <p className="text-lg text-neutral-500 dark:text-neutral-400 max-w-xl mx-auto leading-relaxed mb-8">
-          3 GB RAM &bull; 300% CPU &bull; 10 GB storage &bull; 3 ports. No credit card required.
+          4 GB RAM &bull; 200% CPU &bull; 10 GB storage &bull; 5 ports. No credit card required.
         </p>
         <a href="https://zero.acorehosting.com" target="_blank" rel="noopener noreferrer" className="btn scale tilt bg-[#14b8a6] text-[#0f766e] px-10 py-4 text-lg font-bold">
           Get started
