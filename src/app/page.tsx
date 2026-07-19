@@ -298,7 +298,7 @@ function Reviews() {
               key={i}
               data-aos="fade-up"
               data-aos-delay={600 + i * 100}
-              className="glass-card flex-1 h-full flex flex-col gap-6 p-10 rounded-3xl hover:scale-95 transition-transform duration-300 ease-out"
+              className="glass-card flex-1 h-full flex flex-col gap-6 p-10 rounded-3xl hover:scale-[0.97] transition-all duration-500 ease-in-out"
             >
               <div className="flex items-center justify-between">
                 <div className="flex gap-1 text-yellow-400 text-xl">
