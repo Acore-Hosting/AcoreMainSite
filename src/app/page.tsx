@@ -261,7 +261,7 @@ function Reviews() {
 
       <div className="2xl:px-[350px] w-full">
 
-        {/* Trustpilot Rating */}
+        {/* Trustpilot Summary */}
         <div
           className="glass-card rounded-3xl p-8 mb-10 flex flex-col items-center justify-center gap-4 text-center"
           data-aos="fade-up"
@@ -300,7 +300,20 @@ function Reviews() {
               key={i}
               data-aos="fade-up"
               data-aos-delay={600 + i * 100}
-              className="glass-card flex-1 h-full flex flex-col gap-10 p-10 rounded-3xl hover:scale-95 transition-transform duration-300 ease-out"
+              className="
+                glass-card
+                flex-1
+                h-full
+                flex
+                flex-col
+                gap-10
+                p-10
+                rounded-3xl
+                transition-transform
+                duration-300
+                ease-out
+                hover:scale-[0.95]
+              "
             >
 
               <div className="flex items-center justify-between">
@@ -312,7 +325,6 @@ function Reviews() {
                     </span>
                   ))}
                 </div>
-
 
                 <a
                   href={review.link}
@@ -361,6 +373,7 @@ function Reviews() {
     </div>
   );
 }
+
 function Team() {
   return (
     <div id="team" className="w-screen flex flex-col gap-10 px-5 py-[150px] min-h-screen bg-black text-white border-t-2 border-neutral-800 items-center justify-center">
