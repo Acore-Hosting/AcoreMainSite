@@ -183,7 +183,7 @@ export default function StatusPage() {
     <>
       <nav className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-3rem)] lg:w-max max-w-4xl px-12 py-2 flex items-center gap-10 glass-card !rounded-2xl border-none transition-all duration-700 ${scrolled ? "nav-scrolled" : "nav-glass-hidden"}`}>
         <Link href="/" className="flex items-center gap-3">
-          <img src="https://cdn.acorehosting.com/logo/logo-dark.webp" alt="Acore Hosting" className="h-11 w-auto" />
+          <img src="https://cdn.acorehosting.com/img/logo-text-white-2.png" alt="Acore Hosting" className="h-11 w-auto" />
         </Link>
         <div className="hidden md:flex items-center gap-3">
           {links.map((l) => (
@@ -227,7 +227,7 @@ export default function StatusPage() {
         <div className="w-full max-w-4xl mx-auto">
           <header className="text-center mb-12">
             <div className="flex items-center justify-center mb-4">
-              <img src="https://cdn.acorehosting.com/logo/logo-dark.webp" alt="Acore Hosting" className="h-16 w-auto drop-shadow-[0_0_30px_rgba(34,197,94,0.3)]" />
+              <img src="https://cdn.acorehosting.com/img/logo-text-white-2.png" alt="Acore Hosting" className="h-16 w-auto drop-shadow-[0_0_30px_rgba(34,197,94,0.3)]" />
             </div>
             <p className="text-zinc-400 text-sm">System Status &amp; Incident Report</p>
           </header>
