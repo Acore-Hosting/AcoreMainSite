@@ -231,7 +231,7 @@ function CTA() {
           Start building for free
         </h2>
         <p className="text-lg text-[#0f766e]/80 max-w-lg mx-auto mb-10" data-aos="fade-up" data-aos-delay="150">
-          No credit card required. 30-day money-back guarantee on upgrades.
+          No credit card required.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="300">
           <a href="https://zero.acorehosting.com" target="_blank" rel="noopener noreferrer" className="btn scale tilt bg-[#0f766e] text-white font-bold px-10 py-4 text-lg hover:bg-[#115e59] rounded-full hover:rounded-2xl transition-all duration-300">
