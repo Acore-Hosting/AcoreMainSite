@@ -161,7 +161,7 @@ function Projects() {
     },
     {
       title: "Hytale Hosting",
-      desc: "Ready for the Hytale release. Pre-configured servers with mod support and instant setup when the game drops.",
+      desc: "Low-latency Hytale servers with DDoS protection, and full FTP access.",
       icon: "https://cdn.acorehosting.com/branding/plans/hytale.png",
     },
   ];
@@ -230,7 +230,6 @@ function Reviews() {
 
   return (
     <div className="w-screen flex flex-col gap-10 px-5 py-[150px] bg-black text-white items-center justify-center">
-
       <div className="flex flex-col items-center justify-center gap-10 2xl:px-[350px] w-full">
 
         <div
@@ -261,13 +260,12 @@ function Reviews() {
 
       <div className="2xl:px-[350px] w-full">
 
-        {/* Trustpilot Summary */}
+        {/* Trustpilot Rating */}
         <div
           className="glass-card rounded-3xl p-8 mb-10 flex flex-col items-center justify-center gap-4 text-center"
           data-aos="fade-up"
           data-aos-delay="400"
         >
-
           <img
             src="https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-4.5.svg"
             alt="Trustpilot stars"
@@ -275,45 +273,24 @@ function Reviews() {
           />
 
           <h3 className="text-2xl font-bold custom-font">
-            Rated{" "}
-            <span className="text-[#00b67a]">
-              Excellent
-            </span>{" "}
-            on Trustpilot
+            Rated <span className="text-[#00b67a]">Excellent</span> on Trustpilot
           </h3>
 
           <p className="text-neutral-400">
-            <span className="text-white font-semibold">
-              4.3 / 5
-            </span>{" "}
-            based on verified customer reviews.
+            4.3 / 5 stars based on verified customer reviews.
           </p>
-
         </div>
 
 
-        {/* Review Cards */}
+        {/* Reviews */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
 
           {reviews.map((review, i) => (
             <div
               key={i}
               data-aos="fade-up"
-              data-aos-delay={600 + i * 100}
-              className="
-                glass-card
-                flex-1
-                h-full
-                flex
-                flex-col
-                gap-10
-                p-10
-                rounded-3xl
-                transition-transform
-                duration-300
-                ease-out
-                hover:scale-[0.95]
-              "
+              data-aos-delay={500 + i * 100}
+              className="glass-card flex-1 h-full flex flex-col gap-6 p-10 rounded-3xl hover:scale-95 transition-transform duration-300 ease-out"
             >
 
               <div className="flex items-center justify-between">
@@ -330,9 +307,9 @@ function Reviews() {
                   href={review.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-green-400 hover:text-green-300 text-sm font-semibold transition-colors"
+                  className="btn-outline green !px-4 !py-2 rounded-xl text-sm"
                 >
-                  Trustpilot ↗
+                  Trustpilot
                 </a>
 
               </div>
@@ -368,8 +345,23 @@ function Reviews() {
 
         </div>
 
-      </div>
 
+        {/* View All Button */}
+        <div
+          className="flex justify-center mt-10"
+          data-aos="fade-up"
+        >
+          <a
+            href="https://uk.trustpilot.com/review/acorehosting.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn expand scale btn-primary px-8 py-3"
+          >
+            View all Trustpilot reviews
+          </a>
+        </div>
+
+      </div>
     </div>
   );
 }
