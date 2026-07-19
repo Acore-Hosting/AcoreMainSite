@@ -230,8 +230,8 @@ function Reviews() {
 
   return (
     <div className="w-screen flex flex-col gap-10 px-5 py-[150px] bg-black text-white items-center justify-center">
-      <div className="flex flex-col items-center justify-center gap-10 2xl:px-[350px] w-full">
 
+      <div className="flex flex-col items-center justify-center gap-10 2xl:px-[350px] w-full">
         <div
           className="glass-card p-1.5 px-5 rounded-full text-[15px] font-semibold text-center"
           data-aos="fade-up"
@@ -254,32 +254,54 @@ function Reviews() {
         >
           Hundreds of gamers and developers trust Acore Hosting.
         </p>
-
       </div>
+
 
       <div className="2xl:px-[350px] w-full">
 
         {/* Trustpilot Summary */}
         <div
-          className="glass-card rounded-3xl p-8 mb-10 flex flex-col items-center justify-center gap-5 text-center"
+          className="
+            glass-card
+            rounded-3xl
+            p-8
+            mb-10
+            flex
+            flex-col
+            items-center
+            justify-center
+            gap-4
+            text-center
+            transition-transform
+            duration-500
+            ease-out
+            hover:scale-[0.97]
+          "
           data-aos="fade-up"
           data-aos-delay="400"
         >
+
           <img
             src="https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-4.5.svg"
-            alt="Trustpilot Rating"
+            alt="Trustpilot stars"
             className="h-10"
           />
 
-          <div>
-            <h3 className="text-2xl font-bold custom-font">
-              Rated <span className="text-green-400">4.3 / 5</span> on Trustpilot
-            </h3>
+          <h3 className="text-2xl font-bold custom-font">
+            Rated{" "}
+            <span className="text-[#00b67a]">
+              Excellent
+            </span>{" "}
+            on Trustpilot
+          </h3>
 
-            <p className="text-neutral-400 mt-2">
-              Based on verified customer reviews.
-            </p>
-          </div>
+          <p className="text-neutral-400">
+            <span className="text-white font-semibold">
+              4.3 / 5
+            </span>{" "}
+            based on verified customer reviews.
+          </p>
+
         </div>
 
 
@@ -291,7 +313,19 @@ function Reviews() {
               key={i}
               data-aos="fade-up"
               data-aos-delay={600 + i * 100}
-              className="glass-card flex-1 h-full flex flex-col gap-6 p-10 rounded-3xl hover:scale-[0.97] transition-all duration-500 ease-in-out"
+              className="
+                glass-card
+                flex
+                flex-col
+                gap-6
+                p-10
+                rounded-3xl
+                h-full
+                transition-transform
+                duration-500
+                ease-out
+                hover:scale-[0.97]
+              "
             >
 
               <div className="flex items-center justify-between">
@@ -304,13 +338,20 @@ function Reviews() {
                   ))}
                 </div>
 
+
                 <a
                   href={review.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-outline green !px-4 !py-2 rounded-xl text-sm"
+                  className="
+                    text-green-400
+                    text-sm
+                    font-semibold
+                    hover:text-green-300
+                    transition-colors
+                  "
                 >
-                  Trustpilot
+                  Trustpilot ↗
                 </a>
 
               </div>
@@ -321,7 +362,14 @@ function Reviews() {
                 <img
                   src={review.avatar}
                   alt={review.name}
-                  className="w-14 h-14 rounded-full object-cover border border-neutral-700"
+                  className="
+                    w-14
+                    h-14
+                    rounded-full
+                    object-cover
+                    border
+                    border-neutral-700
+                  "
                 />
 
                 <div>
@@ -346,22 +394,8 @@ function Reviews() {
 
         </div>
 
-
-        <div
-          className="flex justify-center mt-10"
-          data-aos="fade-up"
-        >
-          <a
-            href="https://uk.trustpilot.com/review/acorehosting.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn expand scale btn-primary px-8 py-3"
-          >
-            Read all Trustpilot reviews
-          </a>
-        </div>
-
       </div>
+
     </div>
   );
 }
