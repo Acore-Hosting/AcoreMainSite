@@ -230,6 +230,7 @@ function Reviews() {
 
   return (
     <div className="w-screen flex flex-col gap-10 px-5 py-[150px] bg-black text-white items-center justify-center">
+
       <div className="flex flex-col items-center justify-center gap-10 2xl:px-[350px] w-full">
 
         <div
@@ -260,7 +261,7 @@ function Reviews() {
 
       <div className="2xl:px-[350px] w-full">
 
-        {/* Trustpilot Rating */}
+        {/* Trustpilot Summary */}
         <div
           className="glass-card rounded-3xl p-8 mb-10 flex flex-col items-center justify-center gap-4 text-center"
           data-aos="fade-up"
@@ -268,7 +269,7 @@ function Reviews() {
         >
           <img
             src="https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-4.5.svg"
-            alt="Trustpilot stars"
+            alt="Trustpilot rating"
             className="h-10"
           />
 
@@ -282,7 +283,7 @@ function Reviews() {
         </div>
 
 
-        {/* Reviews */}
+        {/* Review Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
 
           {reviews.map((review, i) => (
@@ -290,18 +291,16 @@ function Reviews() {
               key={i}
               data-aos="fade-up"
               data-aos-delay={500 + i * 100}
-              className="glass-card flex-1 h-full flex flex-col gap-6 p-10 rounded-3xl hover:scale-95 transition-transform duration-300 ease-out"
+              className="glass-card flex-1 h-full flex flex-col gap-6 p-10 rounded-3xl"
             >
 
               <div className="flex items-center justify-between">
 
-                <div className="flex gap-1 text-yellow-400 text-xl">
-                  {Array.from({ length: 5 }).map((_, star) => (
-                    <span key={star}>
-                      {star < review.rating ? "★" : "☆"}
-                    </span>
-                  ))}
-                </div>
+                <img
+                  src={`https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-${review.rating}.svg`}
+                  alt={`${review.rating} star Trustpilot rating`}
+                  className="h-6 w-auto"
+                />
 
                 <a
                   href={review.link}
@@ -332,7 +331,6 @@ function Reviews() {
                     {review.date}
                   </p>
                 </div>
-
               </div>
 
 
@@ -346,7 +344,6 @@ function Reviews() {
         </div>
 
 
-        {/* View All Button */}
         <div
           className="flex justify-center mt-10"
           data-aos="fade-up"
@@ -362,6 +359,7 @@ function Reviews() {
         </div>
 
       </div>
+
     </div>
   );
 }
