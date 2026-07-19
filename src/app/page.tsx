@@ -66,7 +66,7 @@ function Navbar() {
     <>
       <nav className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-3rem)] lg:w-max max-w-4xl px-12 py-2 flex items-center gap-10 glass-card !rounded-2xl border-none transition-all duration-700 ${scrolled ? "nav-scrolled" : "nav-glass-hidden"}`}>
         <Link href="/" className="flex items-center gap-3">
-          <img src="https://cdn.acorehosting.com/img/logo-text-white-2.png" alt="Acore Hosting" className="h-11 w-auto" />
+          <img src="https://cdn.acorehosting.com/logo/logo-dark.webp" alt="Acore Hosting" className="h-11 w-auto" />
         </Link>
         <div className="hidden md:flex items-center gap-3">
           {links.map((l) => (
@@ -564,7 +564,7 @@ function Footer() {
         <div className="mb-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="mb-4 flex items-center gap-2">
-              <img src="https://cdn.acorehosting.com/img/logo-text-white-2.png" alt="Acore Hosting" className="h-8 w-auto" />
+              <img src="https://cdn.acorehosting.com/logo/logo-dark.webp" alt="Acore Hosting" className="h-8 w-auto" />
             </div>
             <p className="text-sm leading-relaxed text-neutral-500">Green-powered hosting infrastructure. Fast, reliable, and built for the modern web.</p>
           </div>
