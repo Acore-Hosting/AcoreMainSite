@@ -219,7 +219,7 @@ function Reviews() {
     {
       name: "C Akshaj",
       avatar:
-        "https://user-images.trustpilot.com/6a114ee38dd5c47d9a83c7cd/73x73.png",
+        "https://cdn.acorehosting.com/logo.png",
       date: "23 May 2026",
       rating: 5,
       review:
@@ -261,7 +261,6 @@ function Reviews() {
 
       <div className="2xl:px-[350px] w-full">
 
-        {/* Trustpilot Summary */}
         <div
           className="glass-card rounded-3xl p-8 mb-10 flex flex-col items-center justify-center gap-4 text-center"
           data-aos="fade-up"
@@ -283,7 +282,6 @@ function Reviews() {
         </div>
 
 
-        {/* Review Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
 
           {reviews.map((review, i) => (
@@ -291,27 +289,14 @@ function Reviews() {
               key={i}
               data-aos="fade-up"
               data-aos-delay={500 + i * 100}
-              className="glass-card flex-1 h-full flex flex-col gap-6 p-10 rounded-3xl"
+              className="glass-card flex flex-col gap-6 p-10 rounded-3xl"
             >
 
-              <div className="flex items-center justify-between">
-
-                <img
-                  src={`https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-${review.rating}.svg`}
-                  alt={`${review.rating} star Trustpilot rating`}
-                  className="h-6 w-auto"
-                />
-
-                <a
-                  href={review.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-outline green !px-4 !py-2 rounded-xl text-sm"
-                >
-                  Trustpilot
-                </a>
-
-              </div>
+              <img
+                src={`https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-${review.rating}.svg`}
+                alt={`${review.rating} star Trustpilot rating`}
+                className="h-6 w-auto"
+              />
 
 
               <div className="flex items-center gap-4">
@@ -331,12 +316,23 @@ function Reviews() {
                     {review.date}
                   </p>
                 </div>
+
               </div>
 
 
               <p className="text-neutral-300 leading-7 flex-grow">
                 "{review.review}"
               </p>
+
+
+              <a
+                href={review.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-green-400 hover:text-green-300 font-semibold text-sm mt-auto"
+              >
+                View the full review ↗
+              </a>
 
             </div>
           ))}
