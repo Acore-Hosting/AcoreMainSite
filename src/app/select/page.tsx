@@ -63,8 +63,8 @@ export default function SelectPage() {
             <h2 className="text-3xl font-black mb-3">Zero</h2>
             <p className="text-neutral-500 dark:text-neutral-400 text-sm leading-relaxed mb-6">Free hosting for small projects. Generous resource limits, no credit card required.</p>
             <div className="mt-auto flex flex-wrap gap-2 justify-center mb-6">
-              <span className="text-xs font-semibold bg-[#14b8a6]/10 text-[#14b8a6] px-3 py-1.5 rounded-full">3 GB RAM</span>
-              <span className="text-xs font-semibold bg-[#14b8a6]/10 text-[#14b8a6] px-3 py-1.5 rounded-full">300% CPU</span>
+              <span className="text-xs font-semibold bg-[#14b8a6]/10 text-[#14b8a6] px-3 py-1.5 rounded-full">4 GB RAM</span>
+              <span className="text-xs font-semibold bg-[#14b8a6]/10 text-[#14b8a6] px-3 py-1.5 rounded-full">200% CPU</span>
               <span className="text-xs font-semibold bg-[#14b8a6]/10 text-[#14b8a6] px-3 py-1.5 rounded-full">10 GB Storage</span>
             </div>
             <span className="btn scale bg-[#14b8a6] text-[#0f766e] font-bold px-8 py-3 rounded-full hover:rounded-2xl transition-all duration-300 text-sm">Get started free</span>
