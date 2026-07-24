@@ -276,7 +276,7 @@ function Reviews() {
           </h3>
 
           <p className="text-neutral-400">
-            4.4 / 5 stars based on verified customer reviews.
+            4.5 / 5 stars based on verified customer reviews.
           </p>
         </div>
 
